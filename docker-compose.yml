@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:16-bookworm
+    container_name: myboard-db
+    environment:
+      POSTGRES_DB: myboard
+      POSTGRES_USER: myboard
+      POSTGRES_PASSWORD: myboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myboard -d myboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - myboard
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: myboard-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@myboard.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - myboard
+
+  backend:
+    build: ./backend
+    container_name: myboard-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/myboard
+      SPRING_DATASOURCE_USERNAME: myboard
+      SPRING_DATASOURCE_PASSWORD: myboard
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - myboard
+
+  frontend:
+    build: ./frontend
+    container_name: myboard-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - myboard
+
+volumes:
+  pgdata:
+
+networks:
+  myboard:
