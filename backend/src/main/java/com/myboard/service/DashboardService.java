@@ -64,6 +64,10 @@ public class DashboardService {
             case CLOCK -> { widget.setLayoutW(2); widget.setLayoutH(2); }
             case NOTES -> { widget.setLayoutW(3); widget.setLayoutH(3); }
             case PLACEHOLDER -> { widget.setLayoutW(2); widget.setLayoutH(2); }
+            case WEATHER -> { widget.setLayoutW(2); widget.setLayoutH(3); }
+            case MATRIX -> { widget.setLayoutW(2); widget.setLayoutH(3); }
+            case RSS -> { widget.setLayoutW(3); widget.setLayoutH(3); }
+            case IPTV -> { widget.setLayoutW(4); widget.setLayoutH(4); }
         }
 
         return widgetInstanceRepository.save(widget);

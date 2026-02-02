@@ -12,3 +12,6 @@ spring:
 
 server:
   port: 8080
+
+weather:
+  api-key: ${OPENWEATHER_API_KEY:}

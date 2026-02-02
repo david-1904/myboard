@@ -18,6 +18,7 @@ export default function WidgetWrapper({ widgetType, onDelete, children }: Props)
         <button
           className="widget-delete"
           onClick={(e) => { e.stopPropagation(); onDelete(); }}
+          onMouseDown={(e) => e.stopPropagation()}
           title="Widget entfernen"
         >
           &times;

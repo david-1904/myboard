@@ -26,8 +26,8 @@ export function useDashboard() {
   const saveLayout = useCallback(async (layouts: { id: number; x: number; y: number; w: number; h: number }[]) => {
     try {
       await api.updateLayout(layouts);
-    } catch {
-      // silently ignore layout save errors
+    } catch (e) {
+      console.error('Failed to save layout:', e);
     }
   }, []);
 
@@ -49,14 +49,19 @@ export function useDashboard() {
   }, []);
 
   const removeWidget = useCallback(async (widgetId: number) => {
-    await api.deleteWidget(widgetId);
-    setDashboard(prev => {
-      if (!prev) return prev;
-      return {
-        ...prev,
-        widgets: prev.widgets.filter(w => w.id !== widgetId),
-      };
-    });
+    try {
+      await api.deleteWidget(widgetId);
+      setDashboard(prev => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          widgets: prev.widgets.filter(w => w.id !== widgetId),
+        };
+      });
+    } catch (e) {
+      console.error('Failed to delete widget:', e);
+      alert('Widget konnte nicht gelöscht werden');
+    }
   }, []);
 
   const updateLocalLayout = useCallback((layouts: ReactGridLayout.Layout[]) => {
