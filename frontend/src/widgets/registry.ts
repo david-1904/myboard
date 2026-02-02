@@ -7,6 +7,7 @@ import MatrixWidget from './MatrixWidget';
 import RssWidget from './RssWidget';
 import IptvWidget from './IptvWidget';
 import RadioWidget from './RadioWidget';
+import TodoWidget from './TodoWidget';
 
 const widgetRegistry: Record<string, WidgetDefinition> = {
   CLOCK:       { component: ClockWidget, name: 'Uhr', defaultSize: { w: 2, h: 2 } },
@@ -17,6 +18,7 @@ const widgetRegistry: Record<string, WidgetDefinition> = {
   RSS:         { component: RssWidget, name: 'News', defaultSize: { w: 3, h: 3 } },
   IPTV:        { component: IptvWidget, name: 'IPTV', defaultSize: { w: 4, h: 4 } },
   RADIO:       { component: RadioWidget, name: 'Radio', defaultSize: { w: 2, h: 4 } },
+  TODO:        { component: TodoWidget, name: 'Aufgaben', defaultSize: { w: 2, h: 3 } },
 };
 
 export default widgetRegistry;

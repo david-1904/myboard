@@ -8,5 +8,6 @@ public enum WidgetType {
     MATRIX,
     RSS,
     IPTV,
-    RADIO
+    RADIO,
+    TODO
 }

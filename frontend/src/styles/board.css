@@ -1328,3 +1328,210 @@ body {
 .dark-mode .radio-add-actions button:last-child:hover {
   background: #555;
 }
+
+/* Todo Widget */
+.todo-widget {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.todo-input-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.todo-input-text {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.todo-input-date {
+  width: 110px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.todo-add-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background: #4a90d9;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-add-btn:hover {
+  background: #3a7bc8;
+}
+
+.todo-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.todo-empty {
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+  padding: 20px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.todo-item:hover {
+  background: #f5f5f5;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 0.85rem;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-date {
+  font-size: 0.75rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.todo-item.overdue .todo-date {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.todo-item.overdue .todo-text {
+  color: #c62828;
+}
+
+.todo-item.due-today .todo-date {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.todo-remove {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.todo-item:hover .todo-remove {
+  opacity: 1;
+}
+
+.todo-remove:hover {
+  color: #d32f2f;
+}
+
+.todo-footer {
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.todo-toggle-completed {
+  width: 100%;
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #666;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.todo-toggle-completed:hover {
+  background: #f5f5f5;
+}
+
+/* Dark mode Todo */
+.dark-mode .todo-input-text,
+.dark-mode .todo-input-date {
+  background: transparent;
+  border-color: #555;
+  color: #eee;
+}
+
+.dark-mode .todo-input-date::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.dark-mode .todo-item:hover {
+  background: #3a3a3a;
+}
+
+.dark-mode .todo-item.done .todo-text {
+  color: #666;
+}
+
+.dark-mode .todo-date {
+  background: #444;
+  color: #aaa;
+}
+
+.dark-mode .todo-item.overdue .todo-date {
+  background: #4a2020;
+  color: #f88;
+}
+
+.dark-mode .todo-item.overdue .todo-text {
+  color: #f88;
+}
+
+.dark-mode .todo-item.due-today .todo-date {
+  background: #4a3520;
+  color: #fb8;
+}
+
+.dark-mode .todo-footer {
+  border-top-color: #444;
+}
+
+.dark-mode .todo-toggle-completed {
+  color: #aaa;
+}
+
+.dark-mode .todo-toggle-completed:hover {
+  background: #3a3a3a;
+}
